@@ -11,7 +11,7 @@ const Projects = () => {
             {/* Calculator */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
               <img
-                src="public/images/image.png"
+                src="/images/image.png"
                 alt="Calculator"
                 className="w-full h-48 object-cover"
               />
@@ -44,7 +44,7 @@ const Projects = () => {
             {/* Tic Tac Toe */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
               <img
-                src="/public/images/tic-toc-toe.webp"
+                src="/images/tic-toc-toe.webp"
                 alt="Tic Tac Toe"
                 className="w-full h-48 object-cover"
               />
@@ -76,7 +76,7 @@ const Projects = () => {
             {/* NASA APOD App */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
               <img
-                src="/public/images/space.jpg"
+                src="/images/space.jpg"
                 alt="NASA APOD"
                 className="w-full h-48 object-cover"
               />
