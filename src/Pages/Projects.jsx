@@ -1,37 +1,79 @@
- import React from "react";
-import ProjectCard from "../Components/ProjectCard";
+ 
+import ProjectDetailCard from "../Components/ProjectDetailCard";
+import SectionHeader from "../Components/SectionHeader";
 
+const projects = [
+  {
+    img: "/img/ecommerse.png",
+    alt: "Shoppingholic",
+    title: "Shoppingholic",
+    description:
+      "A full stack ecommerce application with customer and admin workflows. Includes authentication, product management, cart functionality, order tracking and Cloudinary image storage.",
+    techStack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
+    features: [
+      "Authentication & Authorization",
+      "Cart Management",
+      "Order Tracking",
+      "Admin Dashboard",
+      "Dark / Light Theme",
+    ],
+    live: "https://shoppingholic.netlify.app/",
+    github: "https://github.com/Vaibhavi-Bhosale/ecommerce.git",
+    reverse: false,
+  },
+  {
+    img: "/img/chatbot.png",
+    alt: "AI College Assistant",
+    title: "AI College Assistant",
+    description:
+      "AI-powered chatbot built using Google Gemini API. Helps students with admissions, placements, fees, courses, hostel information and college facilities.",
+    techStack: ["React", "TypeScript", "Gemini API", "Tailwind CSS", "Vite"],
+    features: [
+      "Natural Language Queries",
+      "AI Powered Responses",
+      "Dark / Light Mode",
+      "Responsive Design",
+    ],
+    live: "https://ur-college-buddy.netlify.app/",
+    github: "https://github.com/Vaibhavi-Bhosale/college-chatbot",
+    reverse: true,
+  },
+  {
+    img: "/img/apod.png",
+    alt: "NASA APOD",
+    title: "NASA APOD Explorer",
+    description:
+      "A React application that fetches and displays NASA's Astronomy Picture of the Day using NASA APIs.",
+    techStack: ["React", "Axios", "Tailwind CSS", "NASA API"],
+    features: [
+      "API Integration",
+      "Responsive Design",
+      "Daily Astronomy Images",
+    ],
+    live: "https://apodimg.netlify.app/",
+    github: "https://github.com/Vaibhavi-Bhosale/apod-project.git",
+    reverse: false,
+  },
+];
 
 const Projects = () => {
   return (
-    <>
-      <section id="projects" className="py-12 px-4 md:px-20 bg-[#2C3930] text-[#DCD7C9]">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 text-center text-[#A27B5C]">My Projects</h2>
+    <section
+      id="projects"
+      className="py-20 md:py-28 px-6 md:px-12 bg-black scroll-mt-5"
+    >
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          
+          title="Things I've Built "
+          description="A collection of projects showcasing my skills in frontend development, backend development, API integration, authentication, and AI applications."
+        />
 
-          <div className="flex justify-center items-center md:gap-14 gap-7 flex-wrap">
-             
-
-            <ProjectCard  img={"/images/vibeTube.png"}
-                          alt={"vibeTube Cover Image"}
-                          name={"VibeTube"}
-                          des={"VibeTube is a YouTube-like web application built with the MERN stack. Users can watch, upload, like, comment, and delete videos, as well as create tweets and subscribe to other users."}
-                          github = {"https://github.com/Vaibhavi-Bhosale/VibeTube.git"}
-                          live = {"https://vibetube-v.netlify.app"}
-                          /> 
-
-            <ProjectCard  img={"/images/space.jpg"}
-                          alt={"NASA APOD Viewer"}
-                          name={"VibeTube"}
-                          des={"Uses NASAs Astronomy Picture of the Day API to show a new space image every day. Built with React and Tailwind CSS."}
-                          github = {"https://github.com/Vaibhavi-Bhosale/apod-project.git"}
-                          live = {"https://apodimg.netlify.app/"}
-                          /> 
-                          
-          </div>
-        </div>
-      </section>
-    </>
+        {projects.map((project) => (
+          <ProjectDetailCard key={project.title} {...project} />
+        ))}
+      </div>
+    </section>
   );
 };
 

@@ -1,4 +1,6 @@
-import React from 'react'
+ 
+
+import PropTypes from 'prop-types';
 
 function ProjectCard({img, alt, name, des, github, live}) {
   return (
@@ -37,3 +39,12 @@ function ProjectCard({img, alt, name, des, github, live}) {
 }
 
 export default ProjectCard
+
+ProjectCard.propTypes = {
+  img: PropTypes.string,
+  alt: PropTypes.string,
+  name: PropTypes.string,
+  des: PropTypes.string,
+  github: PropTypes.string.isRequired,
+  live: PropTypes.string,
+}

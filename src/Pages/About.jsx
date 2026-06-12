@@ -1,77 +1,66 @@
-import React from "react";
+ 
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import SectionHeader from "../Components/SectionHeader";
+import { scrollToSection } from "../utils/scrollTo";
 
 const About = () => {
   return (
-    <div className="min-h-[calc(100vh-64px-48px)] bg-[#2C3930] text-[#DCD7C9]">
-      {/* About Section */}
-      <section className="py-16 px-6 md:px-20 text-center">
-        <motion.h2
-          className="text-4xl font-bold mb-6 text-[#A27B5C]"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          About Me
-        </motion.h2>
-        <motion.p
-          className="max-w-3xl mx-auto text-lg mb-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          I'm a passionate full-stack developer currently focused on building
-          modern, responsive web apps with the{" "}
-          <span className="text-[#A27B5C] font-medium">MERN stack</span>. I love
-          turning complex problems into simple, elegant solutions. Currently
-          crafting projects that combine backend APIs, frontend UI/UX, and
-          real-world deployment.
-        </motion.p>
+    <section
+      id="about"
+      className="py-20 md:py-28 px-6 md:px-12 bg-black scroll-mt-5"
+      // className="py-20 md:py-28 px-6 md:px-12 bg-[#3F4F44] scroll-mt-5"
+    >
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+           
+          title="Who I Am"
+          description="I'm a passionate full-stack developer focused on building modern, responsive web apps. I love turning complex problems into simple, elegant solutions — combining backend APIs, frontend UI/UX, and real-world deployment."
+        />
 
-        <Link
-          className="inline-block bg-[#DCD7C9] text-[#2C3930] hover:text-white font-semibold px-6 py-3 rounded-md shadow-md hover:bg-[#A27B5C] hover:text-white] transition"
-          to="/connect"
-        >
-          Let's Connect
-        </Link>
-      </section>
-
-      {/* Tech Stack Section */}
-      <section className="py-16 px-6 bg-[#3F4F44] text-center">
-        <motion.h2
-          className="text-4xl font-bold mb-8 text-[#DCD7C9]"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Tech Stack
-        </motion.h2>
         <motion.div
-          className="flex flex-wrap justify-center gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           {[
-            "React",
-            "Node.js",
-            "Express",
-            "MongoDB",
-            "Tailwind CSS",
-            "JavaScript",
-          ].map((tech, index) => (
-            <motion.span
-              key={index}
-              className="bg-[#2C3930] text-[#DCD7C9] shadow-md px-5 py-3 rounded-md font-semibold hover:bg-[#A27B5C] hover:text-white transition"
-              whileHover={{ scale: 1.05 }}
+            {
+              title: "Frontend",
+              text: "React, responsive UI, clean design systems, and smooth user experiences.",
+            },
+            {
+              title: "Backend",
+              text: "Node.js, Express, REST APIs, authentication, and database design.",
+            },
+            {
+              title: "Deployment",
+              text: "Production-ready apps with real-world features and live demos.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="bg-[#2C3930] rounded-xl p-6 border border-[#A27B5C]/20 hover:border-[#A27B5C]/50 transition"
             >
-              {tech}
-            </motion.span>
+              <h3 className="font1 text-[#A27B5C] text-lg mb-2">{item.title}</h3>
+              <p className="font-body text-[#DCD7C9]/80 text-sm leading-relaxed">
+                {item.text}
+              </p>
+            </div>
           ))}
         </motion.div>
-      </section>
-    </div>
+
+        <div className="text-center mt-10">
+          <button
+            type="button"
+            onClick={() => scrollToSection("connect")}
+            className="bg-[#DCD7C9] text-[#2C3930] font-body font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-[#A27B5C] hover:text-white transition cursor-pointer"
+          >
+            Lets Connect
+          </button>
+        </div>
+      </div>
+    </section>
   );
 };
 

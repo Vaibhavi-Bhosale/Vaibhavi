@@ -1,79 +1,91 @@
-import React from "react";
-import { Link } from "react-router-dom";
+ 
 import { motion } from "framer-motion";
-
-const sentence = "Full-Stack Developer | MERN";
+import { scrollToSection } from "../utils/scrollTo";
 
 const Home = () => {
   return (
-    <div className="min-h-[calc(100vh-64px-48px)] flex flex-wrap justify-center items-center bg-[#2C3930] text-[#DCD7C9]">
-      <section className="min-h-[calc(100vh-64px-48px)] flex items-center justify-center text-center px-4">
-        <div>
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="text-4xl md:text-6xl font-bold mb-4 font-inter"
-          >
-            Hi, I'm Vaibhavi
-          </motion.h1>
-
-          {/* Typing Animation */}
-          <motion.p
-            className="text-lg md:text-2xl mb-6"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.05, // delay between letters
-                },
-              },
+    <section
+      id="home"
+      className="min-h-screen flex flex-col-reverse md:flex-row items-center scroll-mt-20"
+    >
+      {/* Left Side */}
+      <div className="w-full md:w-1/2 flex items-center justify-center p-6">
+        <div className="relative w-full max-w-[350px] h-[350px]">
+          {/* Board Image */}
+          <div
+            className="absolute inset-0 bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/img/board-guy.png')",
+              backgroundSize: "contain",
             }}
-          >
-            {sentence.split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 10 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </motion.p>
+          />
 
-          {/* Button */}
-          
-
-            
-            <Link
-            to="/projects"
-            className="bg-[#DCD7C9] text-[#2C3930] font-semibold px-6 py-3 rounded-md shadow-md hover:bg-[#A27B5C] hover:text-white transition"
+          {/* Text on Board */}
+          <button
+            onClick={() => scrollToSection("projects")}
+            className="
+              absolute
+              top-[20%]
+              left-1/2
+              -translate-x-1/2
+              text-2xl
+              md:text-4xl
+              font-bold
+              text-[#2C3930]
+              hover:text-[#614d3c]
+              transition-all
+              duration-300
+              cursor-pointer
+            "
           >
             View My Work
-          </Link>
-
-          <div className="mt-10">
-            <a
-            href="/Vaibhavi-WebDev.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2  text-[#A27B5C]  hover:text-[#614d3c]  rounded-lg"
-          >
-            View Resume
-          </a>
-          </div>
-            
-
+          </button>
         </div>
+      </div>
 
-        
-      </section>
-    </div>
+      {/* Right Side */}
+      <div className="w-full md:w-1/2 flex items-center justify-center p-8 md:p-12">
+        <motion.div
+          className="text-center md:text-left max-w-lg"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <p className="font2 text-5xl md:text-7xl text-[#A27B5C] mb-3">
+            Vaibhavi
+          </p>
+
+          <p className="font1 text-xl md:text-3xl text-[#DCD7C9] mb-6">
+            Full Stack Developer
+          </p>
+
+          <p className="font-body text-[#DCD7C9]/80 text-base md:text-lg leading-relaxed mb-8">
+            Aspiring Full Stack Developer passionate about solving real-world problems through technology.
+          </p>
+
+          <div className="mt-6  ">
+            <a
+              href="/Vaibhavi_Bhosale_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                font-body
+                text-[#A27B5C]
+                hover:text-[#614d3c]
+                transition
+                underline-offset-4
+                hover:underline
+
+                
+               
+              "
+            >
+              View Resume
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
